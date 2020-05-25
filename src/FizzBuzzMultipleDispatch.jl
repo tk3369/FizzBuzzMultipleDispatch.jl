@@ -21,9 +21,9 @@ div5trait(x) = x % 5 == 0 ? IsDivBy5() : NotDivBy5()
 
 fizzbuzz(x) = fizzbuzz(div3trait(x), div5trait(x), x)
 
-fizzbuzz(::T, ::S, x) where {T <: IsDivBy3,  S <: IsDivBy5}  = "FizzBuzz"
-fizzbuzz(::T, ::S, x) where {T <: IsDivBy3,  S <: NotDivBy5} = "Fizz"
-fizzbuzz(::T, ::S, x) where {T <: NotDivBy3, S <: IsDivBy5}  = "Buzz"
-fizzbuzz(::T, ::S, x) where {T <: NotDivBy3, S <: NotDivBy5} = string(x)
+fizzbuzz(::IsDivBy3, ::NotDivBy5, x)  = "Fizz"
+fizzbuzz(::NotDivBy3, ::IsDivBy5, x)  = "Buzz"
+fizzbuzz(::IsDivBy3, ::IsDivBy5, x)   = "FizzBuzz"
+fizzbuzz(::NotDivBy3, ::NotDivBy5, x) = string(x)
 
 end
